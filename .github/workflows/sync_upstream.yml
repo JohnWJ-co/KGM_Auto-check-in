@@ -5,18 +5,19 @@ on:
   workflow_dispatch:
 
 env:
-  UPSTREAM_REPO: qfmc7040/KGM_Auto-check-in
+  UPSTREAM_REPO: kirtocloud-cloud/KGM_Auto-check-in
   TARGET_BRANCH: main
 
 jobs:
   sync:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: 拉取仓库代码
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
-          token: ${{ secrets.PAT }}
 
       - name: 配置Git用户信息
         run: |
